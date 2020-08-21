@@ -2,12 +2,14 @@
 namespace app\controller\test;
 
 use app\BaseController;
+use think\worker\Server;
 
-class Index extends BaseController
+class Index extends Server
 {
-    public function index()
+    protected $socket = 'http://0.0.0.0:2346';
+    public function onMessage($connection,$data)
     {
-        return '1111';
+        $connection->send(json_encode($data));
     }
 
     public function hello($name = 'ThinkPHP6')
