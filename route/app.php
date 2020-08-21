@@ -10,8 +10,11 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('think', function () {
-    return 'hello,ThinkPHP6!';
-});
+Route::group(function () {
+//    Route::rule('ceshi','');
+    Route::bind(':\app\controller\test')
+        ->group(function () {
+            Route::rule('ceshi', 'app\controller\test\Index@index');
+        });
+})->middleware('auth');
 
-Route::get('hello/:name', 'index/hello');
