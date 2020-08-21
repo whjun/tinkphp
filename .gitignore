@@ -1,0 +1,7 @@
+/.idea
+/.vscode
+*.log
+.env
+.htaccess
+.user.ini
+/404.html
